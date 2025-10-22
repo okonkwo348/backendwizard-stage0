@@ -250,5 +250,3 @@ This project fulfills all the **Backend Wizards Stage 0** requirements:
 > “Backend development is not just about writing APIs — it’s about building reliable, predictable, and elegant systems.” 🧱✨
 > — *Okonkwo Emmanuel*
 
-```
-
