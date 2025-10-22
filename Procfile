@@ -1,1 +1,2 @@
-web: gunicorn backendwiszard.wsgi
+web: gunicorn backendwiszard.wsgi --log-file -
+
