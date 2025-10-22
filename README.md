@@ -1,244 +1,254 @@
-<<<<<<< HEAD
-# backendwizard-stage0
-=======
-Perfect 💪 — let’s craft you a **professional, polished `README.md`** for your Stage 0 Django task, fully tailored for **Railway deployment** and following best practices.
+````markdown
+# 🧠 Backend Wizards — Stage 0 Task  
+### 🚀 Dynamic Profile API (Python/Django)
 
-Here’s the complete version you can paste directly into your `README.md` file 👇
-
----
-
-```markdown
-# 🧠 Backend Wizard - Stage 0 Task (Django API Project)
-
-A simple yet powerful **Django REST API** built as part of the **Backend Stage 0 task**.  
-This project demonstrates clean backend structure, environment configuration, and deployment on **Railway**.
+This project is my submission for **Backend Wizards — Stage 0 Task**.  
+It’s a simple but dynamic REST API built with **Django REST Framework**, designed to return my profile information along with a **random cat fact** fetched live from the **Cat Facts API**.
 
 ---
 
-## 🚀 Features
+## 📋 Task Overview
 
-- ✅ Django REST Framework (DRF) setup  
-- ✅ API endpoint returning basic JSON response  
-- ✅ Environment variable configuration  
-- ✅ Deployed on [Railway.app](https://railway.app/)  
-- ✅ Follows clean folder structure and best practices  
+**Goal:**  
+Create a RESTful GET endpoint `/me` that returns:
+- Your name, email, and backend stack.
+- The current UTC timestamp.
+- A random cat fact from the Cat Facts API (`https://catfact.ninja/fact`).
+
+### ✅ Expected Response Format
+
+```json
+{
+  "status": "success",
+  "user": {
+    "email": "okonkwoemmanuel348@gmail.com",
+    "name": "Okonkwo Emmanuel",
+    "stack": "Python/Django"
+  },
+  "timestamp": "2025-10-15T12:34:56.789Z",
+  "fact": "Cats sleep for around 70% of their lives."
+}
+````
 
 ---
 
-## 🧩 Tech Stack
+## 🧑‍💻 Tech Stack
 
-| Technology | Purpose |
-|-------------|----------|
-| **Python 3.12+** | Programming language |
-| **Django 5.2.7** | Web framework |
-| **Django REST Framework** | API building |
-| **Gunicorn** | WSGI server for production |
-| **Railway** | Hosting & deployment |
+* **Language:** Python 3.11+
+* **Framework:** Django 5.2.1
+* **REST Toolkit:** Django REST Framework
+* **HTTP Client:** Requests
+* **Deployment:** Koyeb (PaaS)
+* **Server:** Gunicorn
+* **Static Files:** WhiteNoise
 
 ---
 
-## 🏗️ Project Structure
+## ⚙️ Project Structure
 
 ```
-
 backendwiszard/
-├── backendwiszard/        # Main project folder
+│
+├── backendwiszard/
+│   ├── __init__.py
 │   ├── settings.py
 │   ├── urls.py
-│   └── wsgi.py
-├── profileapp/            # Core Django app
+│   ├── wsgi.py
+│   └── asgi.py
+│
+├── profileapp/
+│   ├── __init__.py
 │   ├── views.py
-│   ├── urls.py
-│   ├── models.py
-│   └── ...
+│   └── urls.py
+│
 ├── manage.py
 ├── requirements.txt
+├── Procfile
 └── README.md
-
-````
-
----
-
-## ⚙️ Installation Guide
-
-### 1️⃣ Clone the repository
-
-```bash
-git clone https://github.com/<your-username>/backendwiszard-stage0.git
-cd backendwiszard-stage0
-````
-
-### 2️⃣ Create and activate virtual environment
-
-```bash
-# Windows
-python -m venv env
-env\Scripts\activate
-
-# macOS/Linux
-python3 -m venv env
-source env/bin/activate
 ```
-
-### 3️⃣ Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 4️⃣ Run migrations
-
-```bash
-python manage.py migrate
-```
-
-### 5️⃣ Run the local development server
-
-```bash
-python manage.py runserver
-```
-
-Then open your browser at 👉 `http://127.0.0.1:8000/`
 
 ---
 
 ## 🌐 API Endpoint
 
-### **Base URL**
+| Method | Endpoint | Description                             |
+| ------ | -------- | --------------------------------------- |
+| GET    | `/me`    | Returns profile info + dynamic cat fact |
 
-> `https://<your-app-name>.up.railway.app/`
+### Example Request
 
-### **Endpoint**
+```bash
+GET https://your-koyeb-app-name.koyeb.app/me/
+```
 
-> `/api/`
-
-### **Method**
-
-`GET`
-
-### **Example Response**
+### Example Response
 
 ```json
 {
-  "slackUsername": "Emmy",
-  "backend": true,
-  "age": 25,
-  "bio": "A passionate backend developer learning Django and building creative APIs."
+  "status": "success",
+  "user": {
+    "email": "okonkwoemmanuel348@gmail.com",
+    "name": "Okonkwo Emmanuel",
+    "stack": "Python/Django"
+  },
+  "timestamp": "2025-10-15T12:34:56.789Z",
+  "fact": "Cats have five toes on their front paws, but only four toes on their back paws."
 }
 ```
 
 ---
 
-## 🧮 Environment Variables
+## 🧩 Key Features
 
-Before deploying to Railway, make sure your `.env` file (not committed to Git) includes:
-
-```
-DJANGO_SECRET_KEY=your_secret_key_here
-DEBUG=False
-ALLOWED_HOSTS=*
-```
+✅ Returns **live data** from an external API (Cat Facts API)
+✅ Includes **dynamic UTC timestamps** in ISO 8601 format
+✅ Proper **error handling** for network failures and timeouts
+✅ Uses **Django REST Framework** for clean, maintainable API structure
+✅ Ready for **deployment on Koyeb** or other PaaS platforms
 
 ---
 
-## 🚀 Deployment on Railway
+## 🛠️ Local Development Setup
 
-### 1️⃣ Initialize Git (if not already done)
+Follow these steps to run the project locally 👇
+
+### 1️⃣ Clone the Repository
 
 ```bash
-git init
-git add .
-git commit -m "Initial commit"
+git clone https://github.com/okonkwo348/backendwiszard-stage0.git
+cd backendwiszard-stage0
 ```
 
-### 2️⃣ Create a new project on Railway
+### 2️⃣ Create and Activate Virtual Environment
 
-* Go to [Railway.app](https://railway.app/)
-* Connect your GitHub repository
-* Railway will auto-detect your Django app
-
-### 3️⃣ Add Environment Variables
-
-In your Railway project settings → **Variables**, add:
-
-```
-DJANGO_SECRET_KEY
-DEBUG
-ALLOWED_HOSTS
-```
-
-### 4️⃣ Deploy
-
-Once pushed to GitHub, Railway will automatically build and deploy your app.
-You’ll receive a live URL like:
-
-```
-https://backendwizard-production.up.railway.app/
-```
-
----
-
-## 🧾 Dependencies
-
-All required packages are listed in `requirements.txt`, including:
-
-```
-Django==5.2.7
-djangorestframework
-gunicorn
-python-dotenv
-```
-
----
-
-## 🧠 Author
-
-**Name:** Emmanuel
-**Slack Username:** `Emmy`
-**Role:** Backend Developer (Django)
-**Task:** Stage 0 — HNG Backend Track
-
----
-
-## 🏁 Notes
-
-* Do **NOT** commit your `env/` folder or `.env` file.
-* Always push changes to GitHub before deploying on Railway.
-* Check your logs in Railway if deployment fails:
-  `railway logs`
-
----
-
-## 🧡 Acknowledgements
-
-Special thanks to **HNG Backend Track mentors** for their guidance and support 🙌
-
----
-
-### 🎯 Example Command Summary
-
-| Command                         | Description                   |
-| ------------------------------- | ----------------------------- |
-| `python manage.py runserver`    | Run the project locally       |
-| `python manage.py migrate`      | Apply database migrations     |
-| `pip freeze > requirements.txt` | Update dependencies           |
-| `git push origin main`          | Push to GitHub for deployment |
-
----
-
-**Happy Coding 👨‍💻!**
-
-> “Build. Learn. Deploy. Repeat.” 🚀
-
-````
-
----
-
-### ✅ Next Step
-After saving this in your `README.md`, run:
 ```bash
-git add README.md
-git commit -m "Added detailed README for Stage 0 task"
-git push
-````
->>>>>>> f280b81 (updated README.md file)
+python -m venv env
+# On Windows:
+env\Scripts\activate
+# On macOS/Linux:
+source env/bin/activate
+```
+
+### 3️⃣ Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4️⃣ Apply Migrations
+
+```bash
+python manage.py migrate
+```
+
+### 5️⃣ Run the Development Server
+
+```bash
+python manage.py runserver
+```
+
+Then visit:
+👉 **[http://127.0.0.1:8000/me/](http://127.0.0.1:8000/me/)**
+
+---
+
+## 🌐 Deployment (Koyeb)
+
+This app is deployed on **[Koyeb](https://www.koyeb.com)** using the following configuration:
+
+### ⚙️ Procfile
+
+```
+web: gunicorn backendwiszard.wsgi --log-file -
+```
+
+### ⚙️ Build Command
+
+```
+pip install -r requirements.txt
+python manage.py collectstatic --noinput
+```
+
+### ⚙️ Run Command
+
+```
+gunicorn backendwiszard.wsgi
+```
+
+### ✅ Settings Adjustments
+
+In `backendwiszard/settings.py`:
+
+```python
+import os
+
+DEBUG = False
+ALLOWED_HOSTS = ['*']
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# WhiteNoise for static file serving
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    ...
+]
+```
+
+---
+
+## 🧾 Requirements
+
+Here are the core dependencies used in this project:
+
+```
+Django==5.2.1
+djangorestframework==3.16.0
+django-cors-headers==4.7.0
+gunicorn==23.0.0
+whitenoise==6.9.0
+requests==2.32.5
+python-dotenv==1.1.0
+```
+
+---
+
+## 🧠 Lessons Learned
+
+Through this task, I learned how to:
+
+* Consume external APIs dynamically within Django.
+* Format JSON responses using Django REST Framework.
+* Handle network errors gracefully.
+* Deploy Django apps on modern cloud platforms (Koyeb).
+* Write clean, production-ready backend code.
+
+---
+
+## 📫 Contact
+
+**👤 Name:** Okonkwo Emmanuel
+**📧 Email:** [okonkwoemmanuel348@gmail.com](mailto:okonkwoemmanuel348@gmail.com)
+**💻 Stack:** Python / Django
+
+---
+
+## 🏁 Final Notes
+
+This project fulfills all the **Backend Wizards Stage 0** requirements:
+
+* ✅ Working `/me` endpoint
+* ✅ Dynamic cat fact integration
+* ✅ Real-time UTC timestamp
+* ✅ JSON response structure compliance
+* ✅ Hosted on a valid platform (Koyeb)
+* ✅ Well-documented repository
+
+---
+
+> “Backend development is not just about writing APIs — it’s about building reliable, predictable, and elegant systems.” 🧱✨
+> — *Okonkwo Emmanuel*
+
+```
+
